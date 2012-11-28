@@ -1,10 +1,10 @@
 Cy
 ==
 
-Cy is an effort to reinvent the usability of programming just as radically as the iPhone reinvented
-the usability of consumer devices.  It is a language and platform designed from the ground up for
-"code mining" -- a planet-wide collaborative search through the space of useful software
-components.
+Cy is an effort to re-imagine the craft of programming from the ground up, with inspiration from 
+Bret Victor's "learnable programming", and with an eye toward frictionless collaboration.
+Cy is a language and platform designed for "code mining" -- a planet-wide collaborative search
+through the space of useful software components.
 
 Linguistically, Cy aspires to preserve the beauty of Haskell, but in a simpler and more approachable
 way. Cy is a "low Haskell" world where the functions are pure, the statements have effects, and the
