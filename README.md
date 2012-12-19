@@ -1,16 +1,37 @@
 Cy
 ==
 
-Cy is an effort to re-imagine the craft of programming from the ground up, with inspiration from 
-Bret Victor's "learnable programming", and with an eye toward frictionless collaboration.
-Cy is a language and platform designed for "code mining" -- a planet-wide collaborative search
-through the space of useful software components.
+Cy is an effort to re-imagine the craft of programming from the ground up, with inspiration from
+Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and with an eye
+toward frictionless collaboration.  Cy is a language and platform designed for "code mining" -- a
+planet-wide collaborative search through the space of useful software components.
 
 Linguistically, Cy aspires to preserve the beauty of Haskell, but in a simpler and more approachable
 way. Cy is a "low Haskell" world where the functions are pure, the statements have effects, and the
 monads live in "for" statements.
 
-Operationally, Cy compiles to JavaScript, the winner in the write-once-run-everywhere war.
+Cy's design focuses on four of the most important new programming problems during its intended
+prime of life: the 2020s. These are 
+
+* ubiquitous computing,
+* gestural interfaces, 
+* augmented reality,
+* massive parallelism.
+
+These are the problems of writing code that lives in the world instead of behind a keyboard and
+monitor. We desperately need better programming paradigms and tools for this because right now only
+a tiny number of expert programmers with special skills can do it. Our lives were transformed when
+web technologies enabled millions of people to write useful code behind a keyboard and monitor. Now
+we have to enable a similarly immense pool of human talent to write code that lives in the world.
+
+Cy compiles to [LLVM](http://llvm.org) bitcode, and from there to native code. Code that lives in
+the world must run on many different hardware devices, from ARM to FPGAs.  LLVM is the most
+promising platform for doing that.
+
+Cy's first mission is to be an easily learned and ultra-high-productivity development environment
+for iOS. This is just a tiny step toward Cy's full goals, but it is a useful step, and provides a
+comparatively straightforward way to get experience with an LLVM environment and with asynchronous
+interactions.
 
 Cy was created by Dean Thompson.
 
@@ -158,12 +179,12 @@ Platform Design
 ---------------
 
 From a linguistic perspective, Cy aspires to preserve the beauty of Haskell, but in a simpler and
-more approachable way. In Haskell terms, every Cy function can be regarded as running in an ST
-monad (Haskell's "state transformer"), with language support for vars (variables) in that monad.
-Instead of Haskell's IO monad, real-world effects are implemented in Cy as actors called
-"components", which Cy encourages to be RESTful where feasible. Primitive IO operations are
-implemented underneath the Cy platform (in JavaScript) and wrapped in components. This approach is
-motivated by the following reasoning:
+more approachable way. In Haskell terms, every Cy function can be regarded as running in an ST monad
+(Haskell's "state transformer"), with language support for vars (variables) in that monad.  Instead
+of Haskell's IO monad, real-world effects are implemented in Cy as actors called "components", which
+Cy encourages to be RESTful where feasible. Primitive IO operations are implemented underneath the
+Cy platform (in any other language that can be compiled to LLVM bitcode) and wrapped in
+components. This approach is motivated by the following reasoning:
 
 - There is great power in pure functions in a typed language. They are highly composable, have
   a natural rough specification in the function signature, are naturally specified further
@@ -272,10 +293,10 @@ the major issues:
 
 - The actions (event handler executions) within a component are serialized with respect to each
   other. For a component implemented in Cy, this is done by treating the component's vars as STM
-  (Software Transactional Memory) variables. For a component implemented partly in JavaScript, this
-  is required by convention. Component actions are triggered by input events, replies from other
-  components, and by these same occurrences when a component communicates with itself via internal
-  actions.
+  (Software Transactional Memory) variables. For a component implemented partly in another LLVM
+  language, this is required by convention. Component actions are triggered by input events, replies
+  from other components, and by these same occurrences when a component communicates with itself via
+  internal actions.
 
 - A component's state can only be observed externally through the component's outbound messages,
   including the init message and replies. Because of this, and given that actions within a
