@@ -29,9 +29,10 @@ the world must run on many different hardware devices, from ARM to FPGAs.  LLVM 
 promising platform for doing that.
 
 Cy's first mission is to be an easily learned and ultra-high-productivity development environment
-for iOS. This is just a tiny step toward Cy's full goals, but it is a useful step, and provides a
-comparatively straightforward way to get experience with an LLVM environment and with asynchronous
-interactions.
+for gestural user interfaces. See, for example,
+[Kinect](http://www.microsoft.com/en-us/kinectforwindows/develop/),
+[OpenNI](http://www.openni.org/), and [LEAP](https://leapmotion.com/). This area is at the beginning
+of rapid growth, will be world-changing, and is a great example of Cy's intended sweet spot.
 
 Cy was created by Dean Thompson.
 
@@ -72,6 +73,11 @@ nothing but our experience and a few key principles, and then assemble a new pro
 thoughtfully piece by piece. If this is indeed the right direction, our progress will be
 exponential. For months or even years it will seem as though we have accomplished very little, until
 we gradually start to realize that we are flying along.
+
+Every decade, 99,998 crazy people start a new language and platform with hopes of getting it into
+wide use, but fail. 2 crazy people get their new language and platform into wide use. You have no
+hope of changing the world unless you are crazy enough to try.  Call me "proudly crazy". Join me if
+you will!
 
 
 Code Mining
