@@ -25,8 +25,8 @@ web technologies enabled millions of people to write useful code behind a keyboa
 we have to enable a similarly immense pool of human talent to write code that lives in the world.
 
 Cy compiles to [LLVM](http://llvm.org) bitcode, and from there to native code. Code that lives in
-the world must run on many different hardware devices, from ARM to FPGAs.  LLVM is the most
-promising platform for doing that.
+the world must run on many different hardware devices, from Intel x86 to ARM to FPGAs.  LLVM is the
+most promising platform for doing this.
 
 Cy's first mission is to be an easily learned and ultra-high-productivity development environment
 for gestural user interfaces. See, for example,
@@ -42,11 +42,10 @@ Am I Crazy? (Dean)
 
 Yes. This is a serious effort to introduce a new programming language and a new platform. I want to
 reinvent the programming experience almost from the ground up with a different set of priorities.
-Objectively speaking, the odds of something like this succeeding have to be 10,000 to 1 against, or
-worse.
+Objectively speaking, the odds of something like this succeeding are probably 5,000 to 1 against.
 
 However, as a programming community, we do need to reinvent our craft from the ground up. We have
-learned a lot in our first 50 years. We can do better now.
+learned a lot in our first half century. We can do better now.
 
 I have squinted off in the direction that many others are pointing -- Bret Victor in particular --
 and I believe I see the new mountain in the distance. I also believe I see a rough path from here in
@@ -74,7 +73,7 @@ thoughtfully piece by piece. If this is indeed the right direction, our progress
 exponential. For months or even years it will seem as though we have accomplished very little, until
 we gradually start to realize that we are flying along.
 
-Every decade, 99,998 crazy people start a new language and platform with hopes of getting it into
+Every decade, 9,998 crazy people start a new language and platform with hopes of getting it into
 wide use, but fail. 2 crazy people get their new language and platform into wide use. You have no
 hope of changing the world unless you are crazy enough to try.  Call me "proudly crazy". Join me if
 you will!
@@ -118,7 +117,7 @@ assistance.)
 A Freelancer who has worked with the original component before and who meets the Principal's
 freelance reputation filter (and whose principal reputation filter was met by the Principal), is
 alerted to this request. He checks the fee for the work (which was computed automatically from the
-Principal's monthly budget, her assistance-value-point velocity, and the value points tht she
+Principal's monthly budget, her assistance-value-point velocity, and the value points that she
 assigned to this task) and decides it is worth his while. He claims the assistance flag. (This
 Principal pays cash and this Freelancer prefers cash. Most work-for-hire deals are done in-kind on
 Cy credits.)
@@ -171,8 +170,7 @@ integrated into the IDE will discover or generate code to meet the developer's n
 software shows potential lines of play and their likely outcomes. For example, when the developer
 starts writing a signature and contract for a function, an MA will suggest existing functions in
 open-source code that have similar signatures and contracts. It will decorate each suggested
-function with its quality score and the developer's reputation and achievement scores. The intended
-feel is much like how chess software shows potential lines of play with their statistics.
+function with its quality score and the developer's reputation and achievement scores.
 
 An MA will even suggest implementations of the function that combine small numbers of existing
 functions to provide the specified signature and meet the contract. The developer can navigate to
@@ -268,7 +266,7 @@ platforms, but as a typical example. Suppose we have the following classes Foo a
       { ... }
     }
 
-Now suppose we want to create a Bar method that combines these capabilities:
+Now suppose we combine the above capabilities into the following new method of Bar:
 
     List<Integer> listBValues(String fooKey) throws DbException, RpcException
 
@@ -277,7 +275,8 @@ write a short essay!  If we scale this up to the complexity of a real system, th
 so complex that it is never fully understood, much less written down.
 
 Some of this complexity is unavoidable. Systems need configuration values, which change their
-behavior. Operations take time, and sometimes they fail. And so on.
+behavior. Operations take time, and sometimes they fail. Programs have resource constraints. And so
+on.
 
 Cy attempts to tame this complexity by providing a simple set of stackable primitives, and by
 supporting a style of development that keeps the abstractions stackable. Here is how Cy deals with
@@ -288,7 +287,7 @@ the major issues:
   terms of its parameters and return value. When provided with the same parameter values, a given
   function always returns the same result.
 
-- Components are actors: they have internal state, and they send and receive messages. From the
+- Components are actors: they have internal state and they send and receive messages. From the
   standpoint of a component's code, the component always starts out with the same constant internal
   state. However, the first message that a component processes is always the "init" input of the
   "admin" port. Like any input, "init" takes a statically typed message, which is expected to
@@ -298,16 +297,19 @@ the major issues:
   internal initial state before invoking its "init" message handler.)
 
 - The actions (event handler executions) within a component are serialized with respect to each
-  other. For a component implemented in Cy, this is done by treating the component's vars as STM
-  (Software Transactional Memory) variables. For a component implemented partly in another LLVM
-  language, this is required by convention. Component actions are triggered by input events, replies
-  from other components, and by these same occurrences when a component communicates with itself via
-  internal actions.
+  other, without blocking but sometimes with retries. For a component implemented in Cy, this is
+  done by treating the component's vars as STM (Software Transactional Memory) variables. For a
+  component implemented partly in another LLVM language, this is required by convention. Component
+  actions are triggered by input events, replies from other components, and by these same
+  occurrences when a component communicates with itself via internal actions.
 
-- A component's state can only be observed externally through the component's outbound messages,
-  including the init message and replies. Because of this, and given that actions within a
-  component are serialized, a component's contract can be specified entirely as invariants across
-  its sequence of inbound and outbound messages.
+- A component's state can only be observed externally through the component's outbound
+  messages. Because of this, and given that actions within a component are serialized, a component's
+  contract can be specified entirely as invariants across its sequence of inbound and outbound
+  messages. (Some components are implemented in other LLVM languages and interact with external 
+  entities through means other than Cy messages. From a Cy program's perspective, such a
+  component is modeled as having input and/or output messages that the Cy program does not happen
+  to access.)
 
 - Execution never blocks within a function or an action. The flow of messages between actions
   (within and across components) is modeled as asynchronous events. Cy's philosophy is that,
@@ -332,7 +334,9 @@ There is no subclassing or inheritance. This is to avoid the complexity of covar
 inference in the face of subclassing, etc. We aren't just being lazy; that complexity would spill
 over into the programmer's mental model and into error messages.
 
-Objects are immutable.
+Objects are logically immutable. They may internally contain mutable data structures for efficiency,
+but this cannot be part of the exposed semantics. (When it is important for a data structure to be
+logically mutable, it must be modeled as a component.)
 
 Methods have the following special characteristics compared to regular functions:
 
