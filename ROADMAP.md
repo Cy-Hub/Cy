@@ -41,6 +41,8 @@ IDE Design Thread
 IDE Development Thread
 ----------------------
 
+( ) Determine how debugger technology and interpreter technology will interrelate.
+
 ( ) Develop a Go interpreter. (Fork from [sbinet/go-eval](https://github.com/sbinet/go-eval)?)
 
 ( ) Choose the IDE platform.  ([Irrlicht](http://irrlicht.sourceforge.net/)?)
