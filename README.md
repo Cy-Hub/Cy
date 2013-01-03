@@ -6,33 +6,58 @@ Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming
 toward frictionless collaboration.  Cy is a language and platform designed for "code mining" -- a
 planet-wide collaborative search through the space of useful software components.
 
-Linguistically, Cy aspires to preserve the beauty of Haskell, but in a simpler and more approachable
-way. Cy is a "low Haskell" world where the functions are pure, the statements have effects, and the
-monads live in "for" statements.
+Cy is a functional language with a loose but important relationship to [Go](http://golang.org). Go is a
+lovely small language for systems programming. It has been created, open-sourced, and promoted by
+Google. Cy embraces the Go language and platform as an essential and permanent subset of the Cy
+platform. Cy participates in Go's ecosystem by
+
+* applying the [principle of least surprise](http://en.wikipedia.org/wiki/Principle_of_least_astonishment) 
+  in adapting Go's syntax and semantics to a language with a [purely functional](http://en.wikipedia.org/wiki/Purely_functional)
+  core and with popular functional programming capabilities such as type
+  inference and pattern matching;
+
+* using Go as the underlying systems programming environment -- for Cy's own implementation, for 
+  extensions, and for integrating with C and C++ packages;
+
+* providing a Cy IDE that aspires to also be the Go IDE with the best support for Learnable
+  Programming.
+
+Go was chosen as a foundation for Cy because it is a clean, simple systems programming language that
+has a promising future, a comfortable syntax for mainstream programmers, and a simple object model
+(structs, interfaces, and no inheritance) that is closely analogous to Haskell's type system.
+
+Where Cy deviates from Go, it moves toward Haskell by default. If Go is Cy's mother, then Haskell is
+Cy's father. Go provides the platform for bringing Cy into the world and the ecosystem for Cy's initial
+nourishment. Haskell is a sterner source of wisdom and techniques.
 
 Cy's design focuses on four of the most important new programming problems during its intended
-prime of life: the 2020s. These are 
+prime of life -- the 2020s: 
 
 * ubiquitous computing,
 * gestural interfaces, 
 * augmented reality,
 * massive parallelism.
 
-These are the problems of writing code that lives in the world instead of behind a keyboard and
-monitor. We desperately need better programming paradigms and tools for this because right now only
-a tiny number of expert programmers with special skills can do it. Our lives were transformed when
-web technologies enabled millions of people to write useful code behind a keyboard and monitor. Now
-we have to enable a similarly immense pool of human talent to write code that lives in the world.
+These are the problems of writing code that lives in the world instead of behind a keyboard and monitor.
+We desperately need better programming paradigms and tools for this because right now only a tiny number
+of expert programmers with special skills can do it. Our lives were transformed when web technologies
+enabled millions of people to write useful code behind a keyboard and monitor. Now we have to enable
+millions of people with varied skills and interests to write code that lives in the world.
 
-Cy compiles to [LLVM](http://llvm.org) bitcode, and from there to native code. Code that lives in
-the world must run on many different hardware devices, from Intel x86 to ARM to FPGAs.  LLVM is the
-most promising platform for doing this.
+Cy will ultimately compile to [LLVM](http://llvm.org) bitcode, and from there to native code. Since we use Go as a platform, it would be ideal if Go compiled to some intermediate form that we could also use, but it does not. Learnable Programming requires the ability to interpret code at various granularities (from complete libraries to functions to lines of code) on the fly, which we can build on LLVM. Also, LLVM is the most promising platform for running on many different hardware devices, from Intel x86 to ARM to FPGAs, which is a requirement for code that lives in the world.
 
-Cy's first mission is to be an easily learned and ultra-high-productivity development environment
-for gestural user interfaces. See, for example,
+As an initial step, Cy will compile to Go source. This would be a poor practical solution, but during
+initial Cy language design it will help us maintain a crisp relationship between Cy and Go. It will
+support initially (and perhaps permanently) defining Cy as a transformation above Go. Plus, it is an easy
+way to get started. And it may serve us long enough that we can wait for someone more qualified than us
+to implement a Go front end for LLVM.
+
+Cy's first practical mission is to be an easily learned and ultra-high-productivity development
+environment for gestural user interfaces. See, for example,
 [Kinect](http://www.microsoft.com/en-us/kinectforwindows/develop/),
-[OpenNI](http://www.openni.org/), and [LEAP](https://leapmotion.com/). This area is at the beginning
-of rapid growth, will be world-changing, and is a great example of Cy's intended sweet spot.
+[SoftKinetic](http://www.softkinetic.com/), [OpenNI](http://www.openni.org/), and
+[LEAP](https://leapmotion.com/). This area is at the beginning of rapid growth, will be world-changing,
+and is a great example of Cy's intended sweet spot.
 
 Cy was created by Dean Thompson.
 
@@ -40,38 +65,27 @@ Cy was created by Dean Thompson.
 Am I Crazy? (Dean)
 ------------------
 
-Yes. This is a serious effort to introduce a new programming language and a new platform. I want to
-reinvent the programming experience almost from the ground up with a different set of priorities.
-Objectively speaking, the odds of something like this succeeding are probably 5,000 to 1 against.
+Yes. This is a serious effort to introduce a new programming language and a new platform. While
+using Go's platform, participating in Go's ecosystem, and taking much wisdom from Haskell, I want to
+reinvent the process and experience of programming almost from the ground up with a different set of
+priorities.  
 
+Objectively speaking, the odds of something like this succeeding are probably 5,000 to 1 against.
 However, as a programming community, we do need to reinvent our craft from the ground up. We have
 learned a lot in our first half century. We can do better now.
 
-I have squinted off in the direction that many others are pointing -- Bret Victor in particular --
-and I believe I see the new mountain in the distance. I also believe I see a rough path from here in
-that direction. So I am starting down that path. If I starve along the way, I will have learned a
-lot, and hopefully helped others find a better path. But my hope is that some of you will join me,
-we will beat the odds, and we will be the first to reach that new mountain.
-
-Wouldn't it make more sense to improve our odds by embracing some existing language and platform and
-applying these principles to them?  I see the appeal in that idea, but I don't believe it will help
-us get to the new mountain. An existing language and platform would be a huge gravitational force
-trying constantly to pull us back to the status quo. Every time we "saved time" by reusing what
-exists, it would pull us off our path. It would change this from an effort to find several 10x gains
-into an effort to find several 10% gains.
-
-Here's another way to look at it: we will need all the creativity we can muster to drastically
+Wouldn't it make more sense to improve our odds by sticking to an existing language and applying
+these principles to the tool chain?  I see the appeal in that idea, but I don't believe it will help
+us get to the new mountain. We will need all the creativity we can muster to drastically
 improve the experience of programming. The language is a huge part of this. As we experiment with
 the tool UI design, we will also have to experiment with the language design. If we accepted an
 existing language -- not designed for this purpose -- as a fixed point, my best intuition is that we
 couldn't pull it off.
 
-Nothing is going to make this easy. Nothing will change the fact that we begin with the odds
-overwhelmingly against us. But to have any chance at all, I feel strongly that we have to start with
-nothing but our experience and a few key principles, and then assemble a new programming world
-thoughtfully piece by piece. If this is indeed the right direction, our progress will be
-exponential. For months or even years it will seem as though we have accomplished very little, until
-we gradually start to realize that we are flying along.
+The closest existing starting points that I can find (in two quite different ways) are Go and
+Haskell. So we reuse Go's platform, we smooth our path by staying close to Go's growing ecosystem,
+and we rely on Haskell as a cohesive and learned source of wisdom and techniques. But we introduce a
+new language.  
 
 Every decade, 9,998 crazy people start a new language and platform with hopes of getting it into
 wide use, but fail. 2 crazy people get their new language and platform into wide use. You have no
@@ -156,17 +170,16 @@ Cy's design is driven by the main platform qualities required for Code Mining:
 - Elegant support for the code-mining flow, which is the primary driver of the platform design
   and the language design.
 
-One reasonable way of looking at Cy is to see it as a language and platform that are driven from the
-ground up by the goals of first realizing Bret Victor's vision of Learnable Programming and then
-leveraging the resulting benefits. Cy is also inspired partly by Chris Granger's [Light
-Table](http://www.chris-granger.com/2012/04/12/light-table---a-new-ide-concept/) project, but with a
-belief that a new language and platform are necessary to realize the full potential of that
-direction.
+One reasonable way of looking at Cy is to see it as a language and platform that are driven by the
+goals of first realizing Bret Victor's vision of Learnable Programming and then leveraging the
+resulting benefits. Cy is also inspired partly by Chris Granger's
+[Light Table](http://www.chris-granger.com/2012/04/12/light-table---a-new-ide-concept/) project,
+but with a belief that a new language is necessary to realize the full potential of that direction.
 
 Cy's IDE will apply Bret's ideas about "creating by reacting" and "recomposition" by automatically
 pulling in open-source code examples that meet the developer's needs, much as chess software pulls
 in examples of public games that proceeded from the current position. Machine Assistants (MAs)
-integrated into the IDE will discover or generate code to meet the developer's needs, much as chess
+integrated into the IDE will find or generate code to meet the developer's needs, much as chess
 software shows potential lines of play and their likely outcomes. For example, when the developer
 starts writing a signature and contract for a function, an MA will suggest existing functions in
 open-source code that have similar signatures and contracts. It will decorate each suggested
@@ -182,13 +195,14 @@ current board position or from a potential line of play.
 Platform Design
 ---------------
 
-From a linguistic perspective, Cy aspires to preserve the beauty of Haskell, but in a simpler and
-more approachable way. In Haskell terms, every Cy function can be regarded as running in an ST monad
-(Haskell's "state transformer"), with language support for vars (variables) in that monad.  Instead
-of Haskell's IO monad, real-world effects are implemented in Cy as actors called "components", which
-Cy encourages to be RESTful where feasible. Primitive IO operations are implemented underneath the
-Cy platform (in any other language that can be compiled to LLVM bitcode) and wrapped in
-components. This approach is motivated by the following reasoning:
+Cy aspires to re-create the purely functional character of Haskell while dropping the aspects of
+Haskell that make mainstream programmers uncomfortable (such as the syntax), make it difficult to
+learn (such as monads), or just plain make it harder (lazy evaluation). In Haskell terms, every Cy
+function can be regarded as running in an ST monad (Haskell's "state transformer"), with language
+support for vars (variables) in that monad.  Instead of Haskell's IO monad, real-world effects are
+implemented in Cy as actors called "components", which Cy encourages to be RESTful where
+feasible. Primitive IO operations are implemented underneath Cy either in Go or in other languages
+wrapped by Go.  This approach is motivated by the following reasoning:
 
 - There is great power in pure functions in a typed language. They are highly composable, have
   a natural rough specification in the function signature, are naturally specified further
@@ -206,11 +220,6 @@ components. This approach is motivated by the following reasoning:
 
 - RESTful components have proven to be an especially approachable and widely applicable subset of
   the more general space of actors.
-
-Cy supports control-flow monads (such as Maybe or List) in "for" statements. In fact, Cy's "for"
-statement supports any type of monad except IO, but the built-in support for stateful effects
-through vars and actors greatly reduces the importance of monads for purposes other than control
-flow.
 
 The Cy language is designed for smooth interplay with the other Cy platform features needed to
 support effective code mining:
@@ -285,7 +294,9 @@ the major issues:
 - Functions are pure, meaning that they have no side effects. This includes not blocking and not
   observing any state outside their parameters. So a function's contract can be specified entirely in
   terms of its parameters and return value. When provided with the same parameter values, a given
-  function always returns the same result.
+  function always returns the same result. (This is [referential
+  transparency](http://en.wikipedia.org/wiki/Referential_transparency_(computer_science)) -- an
+  expression can always be replaced with its value without changing the program's semantics).
 
 - Components are actors: they have internal state and they send and receive messages. From the
   standpoint of a component's code, the component always starts out with the same constant internal
@@ -299,17 +310,15 @@ the major issues:
 - The actions (event handler executions) within a component are serialized with respect to each
   other, without blocking but sometimes with retries. For a component implemented in Cy, this is
   done by treating the component's vars as STM (Software Transactional Memory) variables. For a
-  component implemented partly in another LLVM language, this is required by convention. Component
-  actions are triggered by input events, replies from other components, and by these same
-  occurrences when a component communicates with itself via internal actions.
+  component implemented underneath Cy (in Go or wrapped by Go), this is required by
+  convention. Component actions are triggered by input events, replies from other components, and by
+  these same occurrences when a component communicates with itself via internal actions.
 
 - A component's state can only be observed externally through the component's outbound
   messages. Because of this, and given that actions within a component are serialized, a component's
   contract can be specified entirely as invariants across its sequence of inbound and outbound
-  messages. (Some components are implemented in other LLVM languages and interact with external 
-  entities through means other than Cy messages. From a Cy program's perspective, such a
-  component is modeled as having input and/or output messages that the Cy program does not happen
-  to access.)
+  messages. (A component implemented underneath Cy is modeled as having input and/or output messages
+  that the Cy program does not happen to access.)
 
 - Execution never blocks within a function or an action. The flow of messages between actions
   (within and across components) is modeled as asynchronous events. Cy's philosophy is that,
@@ -324,48 +333,12 @@ the major issues:
   level and the component level.
 
 
-Object Model
-------------
-Unlike Haskell, Cy does have a notion of objects, which borrows lightly from the OO world.
-However, Cy's notion of an object is extremely simple. It is mostly light syntactic sugar
-over a Haskell-like functional model.
-
-There is no subclassing or inheritance. This is to avoid the complexity of covariance, type
-inference in the face of subclassing, etc. We aren't just being lazy; that complexity would spill
-over into the programmer's mental model and into error messages.
-
-Objects are logically immutable. They may internally contain mutable data structures for efficiency,
-but this cannot be part of the exposed semantics. (When it is important for a data structure to be
-logically mutable, it must be modeled as a component.)
-
-Methods have the following special characteristics compared to regular functions:
-
-- A method is invoked with the usual special syntax: `x.m y z`
-
-- An object class can have private fields and methods, which a method can access.
-
-- An object class serves as a namespace for its methods, so the same method name
-  can be used in multiple object classes.
-
-- Methods provide the following notational convenience:
-
-  + A method takes a copy of the object on which it was invoked as an implicit first lvalue parameter;
-
-  + implicitly modifies that lvalue when it updates fields of the object;
-
-  + and implicitly returns that lvalue if it is declared to return the object's own type,
-    and if it ends with a statement instead of an expression.
-
-  + Plus, this implicit behavior extends to a method that invokes another method: the implicit
-    `this` lvalue is passed to the invoked method, and if that method returns a value of the same
-    type, the `this` lvalue is updated in the caller.
-     
-  
 License
 -------
 
-All files in this project (whether so marked or not) are Copyright (c) Dean Thompson and
-subject to the Apache 2 license: http://www.apache.org/licenses/LICENSE-2.0.html
+All source code in this project (whether so marked or not) is Copyright (c) Dean Thompson and
+BSD. All documentation (whether so marked or not) is Copyright (c) Dean Thompson and Creative 
+Commons Attribution 3.0.
 
 
 Documentation

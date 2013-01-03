@@ -1,1 +1,0 @@
-package cy-platform.org/examples/chat 0.0.1
