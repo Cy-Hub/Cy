@@ -1,41 +1,21 @@
 Cy
 ==
 
-Cy is an effort to re-imagine the craft of programming from the ground up, with inspiration from
-Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and with an eye
-toward frictionless collaboration.  Cy is a language and platform designed for "code mining" -- a
-planet-wide collaborative search through the space of useful software components.
+Cy is a development environment for the "world-wide hack" -- a world-wide collaborative search through the
+space of useful software components. It is an effort to re-imagine the craft of programming, with
+inspiration from Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and
+with a focus on frictionless collaboration.
 
-Cy is a functional language with a loose but important relationship to [Go](http://golang.org). Go is a
-lovely small language for systems programming. It has been created, open-sourced, and promoted by
-Google. Cy embraces the Go language and platform as an essential and permanent subset of the Cy
-platform. Cy participates in Go's ecosystem by
-
-* applying the [principle of least surprise](http://en.wikipedia.org/wiki/Principle_of_least_astonishment) 
-  in adapting Go's syntax and semantics to a language with a [purely functional](http://en.wikipedia.org/wiki/Purely_functional)
-  core and with popular functional programming capabilities such as type
-  inference and pattern matching;
-
-* using Go as the underlying systems programming environment -- for Cy's own implementation, for 
-  extensions, and for integrating with C and C++ packages;
-
-* providing a Cy IDE that aspires to also be the Go IDE with the best support for Learnable
-  Programming.
-
-Go was chosen as a foundation for Cy because it is a clean, simple systems programming language that
-has a promising future, a comfortable syntax for mainstream programmers, and a simple object model
-(structs, interfaces, and no inheritance) that is closely analogous to Haskell's type system.
-
-Where Cy deviates from Go, it moves toward Haskell by default. If Go is Cy's mother, then Haskell is
-Cy's father. Go provides the platform for bringing Cy into the world and the ecosystem for Cy's initial
-nourishment. Haskell is a sterner source of wisdom and techniques.
+Cy is based on Mozilla's new language [Rust](http://rust-lang.org). Rust suits Cy's goals because it
+combines pragmatism with a powerful type system and other powerful safety features, and because it compiles
+through [LLVM](http://llvm.org).
 
 Cy's design focuses on four of the most important new programming problems during its intended
 prime of life -- the 2020s: 
 
 * ubiquitous computing,
 * gestural interfaces, 
-* augmented reality,
+* augmented reality including virtual reality and telepresence,
 * massive parallelism.
 
 These are the problems of writing code that lives in the world instead of behind a keyboard and monitor.
@@ -44,60 +24,14 @@ of expert programmers with special skills can do it. Our lives were transformed 
 enabled millions of people to write useful code behind a keyboard and monitor. Now we have to enable
 millions of people with varied skills and interests to write code that lives in the world.
 
-Cy will ultimately compile to [LLVM](http://llvm.org) bitcode, and from there to native code. Since we use Go as a platform, it would be ideal if Go compiled to some intermediate form that we could also use, but it does not. Learnable Programming requires the ability to interpret code at various granularities (from complete libraries to functions to lines of code) on the fly, which we can build on LLVM. Also, LLVM is the most promising platform for running on many different hardware devices, from Intel x86 to ARM to FPGAs, which is a requirement for code that lives in the world.
-
-As an initial step, Cy will compile to Go source. This would be a poor practical solution, but during
-initial Cy language design it will help us maintain a crisp relationship between Cy and Go. It will
-support initially (and perhaps permanently) defining Cy as a transformation above Go. Plus, it is an easy
-way to get started. And it may serve us long enough that we can wait for someone more qualified than us
-to implement a Go front end for LLVM.
-
-Cy's first practical mission is to be an easily learned and ultra-high-productivity development
-environment for gestural user interfaces. See, for example,
-[Kinect](http://www.microsoft.com/en-us/kinectforwindows/develop/),
-[SoftKinetic](http://www.softkinetic.com/), [OpenNI](http://www.openni.org/), and
-[LEAP](https://leapmotion.com/). This area is at the beginning of rapid growth, will be world-changing,
-and is a great example of Cy's intended sweet spot.
-
 Cy was created by Dean Thompson.
 
 
-Am I Crazy? (Dean)
-------------------
+The World-Wide Hack
+-------------------
 
-Yes. This is a serious effort to introduce a new programming language and a new platform. While
-using Go's platform, participating in Go's ecosystem, and taking much wisdom from Haskell, I want to
-reinvent the process and experience of programming almost from the ground up with a different set of
-priorities.  
-
-Objectively speaking, the odds of something like this succeeding are probably 5,000 to 1 against.
-However, as a programming community, we do need to reinvent our craft from the ground up. We have
-learned a lot in our first half century. We can do better now.
-
-Wouldn't it make more sense to improve our odds by sticking to an existing language and applying
-these principles to the tool chain?  I see the appeal in that idea, but I don't believe it will help
-us get to the new mountain. We will need all the creativity we can muster to drastically
-improve the experience of programming. The language is a huge part of this. As we experiment with
-the tool UI design, we will also have to experiment with the language design. If we accepted an
-existing language -- not designed for this purpose -- as a fixed point, my best intuition is that we
-couldn't pull it off.
-
-The closest existing starting points that I can find (in two quite different ways) are Go and
-Haskell. So we reuse Go's platform, we smooth our path by staying close to Go's growing ecosystem,
-and we rely on Haskell as a cohesive and learned source of wisdom and techniques. But we introduce a
-new language.  
-
-Every decade, 9,998 crazy people start a new language and platform with hopes of getting it into
-wide use, but fail. 2 crazy people get their new language and platform into wide use. You have no
-hope of changing the world unless you are crazy enough to try.  Call me "proudly crazy". Join me if
-you will!
-
-
-Code Mining
------------
-
-Code mining is a collaborative search through the space of useful software components by a
-planet-wide network of people and machines who take on the following five roles:
+The world-wide hack is a collaborative search through the space of useful software components by
+people and machines who take on the following five roles:
 
 - *Principal*: the primary author of a particular set of software components.
 
@@ -114,8 +48,8 @@ planet-wide network of people and machines who take on the following five roles:
 - *Machine Assistant* (MA): a software component that takes on tasks such as coding to a spec or
    generating test cases.
 
-The Cy platform facilitates each of these five roles and the flow among them. The goal is a
-seamless interplay across creation, discovery, and validation, and among highly skilled
+The Cy development environment facilitates each of these five roles and the flow among them. The
+goal is a seamless interplay across creation, discovery, and validation, and among highly skilled
 Principals, relatively unskilled Randoms, and sophisticated but mechanical MAs.
 
 For example, a Principal needs a UI component for creating a to-do item. She begins writing some
@@ -155,26 +89,13 @@ implemented and tested. He sees that the Principal's open-source license allows 
 the changes, and he likes them, so he incorporates them into his own version.
 
 
-Cy Qualities for Code Mining
-----------------------------
+IDE for the World Wide Hack
+---------------------------
 
-Cy's design is driven by the main platform qualities required for Code Mining:
-
-- [Learnable Programming](http://worrydream.com/LearnableProgramming/), as envisioned by Bret
-  Victor. 
-
-- "Stackable abstractions" -- abstractions that can be composed and layered while maintaining a
-  clear, concise behavioral contract. The basic building blocks of Cy (pure functions and actors)
-  are chosen to be easily and accurately composable and highly testable.
-
-- Elegant support for the code-mining flow, which is the primary driver of the platform design
-  and the language design.
-
-One reasonable way of looking at Cy is to see it as a language and platform that are driven by the
+One reasonable way of looking at Cy is to see it as a development environment that is driven by the
 goals of first realizing Bret Victor's vision of Learnable Programming and then leveraging the
-resulting benefits. Cy is also inspired partly by Chris Granger's
-[Light Table](http://www.chris-granger.com/2012/04/12/light-table---a-new-ide-concept/) project,
-but with a belief that a new language is necessary to realize the full potential of that direction.
+resulting benefits. Cy is also inspired partly by Chris Granger's [Light
+Table](http://www.chris-granger.com/2012/04/12/light-table---a-new-ide-concept/) project.
 
 Cy's IDE will apply Bret's ideas about "creating by reacting" and "recomposition" by automatically
 pulling in open-source code examples that meet the developer's needs, much as chess software pulls
@@ -195,34 +116,7 @@ current board position or from a potential line of play.
 Platform Design
 ---------------
 
-Cy aspires to re-create the purely functional character of Haskell while dropping the aspects of
-Haskell that make mainstream programmers uncomfortable (such as the syntax), make it difficult to
-learn (such as monads), or just plain make it harder (lazy evaluation). In Haskell terms, every Cy
-function can be regarded as running in an ST monad (Haskell's "state transformer"), with language
-support for vars (variables) in that monad.  Instead of Haskell's IO monad, real-world effects are
-implemented in Cy as actors called "components", which Cy encourages to be RESTful where
-feasible. Primitive IO operations are implemented underneath Cy either in Go or in other languages
-wrapped by Go.  This approach is motivated by the following reasoning:
-
-- There is great power in pure functions in a typed language. They are highly composable, have
-  a natural rough specification in the function signature, are naturally specified further
-  by contracts, and define a highly searchable space of behaviors (ala Hoogle).
-
-- Programs must also have effects. Since pure functions can't have effects, this forces a
-  two-layer approach. Haskell has proven that a two-layer approach can be practical and 
-  beautiful.
-
-- However, Haskell's choice of upper layer -- monads -- forces programmers into intense mathematical
-  abstraction that only suits a small minority of them.
-
-- Since we are required to have at least two layers, we'd like to do as much as possible with
-  just two. Cy takes the position that the most natural and capable upper layer is actors.
-
-- RESTful components have proven to be an especially approachable and widely applicable subset of
-  the more general space of actors.
-
-The Cy language is designed for smooth interplay with the other Cy platform features needed to
-support effective code mining:
+Cy will provide the environment, data, and workflow needed to support the world-wide hack:
 
 - Reputation management and quality scoring.
 - Freelancing and crowd-sourcing.
@@ -236,109 +130,12 @@ support effective code mining:
 - Built-in tracing and debugging integrated with API contracts.
 - Production deployment.
 
-Incidentally, Cy's code-mining flow supports all types of information artifacts, so it can be
-directly applied to projects that don't use the Cy language at all. Perhaps it should be called
-a truth-mining flow, but we would be getting ahead of ourselves.
-
-
-Stackable Abstractions
-----------------------
-The easiest way to explain stackable abstractions is to give a typical example of non-stackable
-abstractions. This example uses Java's syntax, not because Java is any worse than most other
-platforms, but as a typical example. Suppose we have the following classes Foo and Bar:
-
-    /**
-     * Data access layer for the "foo" db. This class obtains the path of its configuration file
-     * from the system property "foo.conf" (defaulting to "./foo.conf") and reads that file to get
-     * its JDBC connection string.
-     */
-    class Foo {
-      /**
-       * Lists the F's in the "foo" db. This method uses a connection pool thread to connect to the "foo" db
-       * and temporarily obtains some locks on that database.
-       */
-      static List<String> listFs(String key) throws DbException
-      { ... }
-    }
-
-    /**
-     * Client proxy for the bar service.
-     */
-    class Bar {
-      Bar(URL serviceUrl, ConnectionParams params) { ... }
-
-      /**
-       * Fetches the B values corresponding to a list of F keys by making an RPC
-       * to the bar service, which will internally obtain some database locks.
-       */
-      List<Integer> fetchBValues(List<String> fs) throws RpcException
-      { ... }
-    }
-
-Now suppose we combine the above capabilities into the following new method of Bar:
-
-    List<Integer> listBValues(String fooKey) throws DbException, RpcException
-
-To explain the actual, complete behavioral contract of the listBValues method, we would have to
-write a short essay!  If we scale this up to the complexity of a real system, the contract becomes
-so complex that it is never fully understood, much less written down.
-
-Some of this complexity is unavoidable. Systems need configuration values, which change their
-behavior. Operations take time, and sometimes they fail. Programs have resource constraints. And so
-on.
-
-Cy attempts to tame this complexity by providing a simple set of stackable primitives, and by
-supporting a style of development that keeps the abstractions stackable. Here is how Cy deals with
-the major issues:
-
-- Functions are pure, meaning that they have no side effects. This includes not blocking and not
-  observing any state outside their parameters. So a function's contract can be specified entirely in
-  terms of its parameters and return value. When provided with the same parameter values, a given
-  function always returns the same result. (This is [referential
-  transparency](http://en.wikipedia.org/wiki/Referential_transparency_(computer_science)) -- an
-  expression can always be replaced with its value without changing the program's semantics).
-
-- Components are actors: they have internal state and they send and receive messages. From the
-  standpoint of a component's code, the component always starts out with the same constant internal
-  state. However, the first message that a component processes is always the "init" input of the
-  "admin" port. Like any input, "init" takes a statically typed message, which is expected to
-  provide the component's configuration if any. (If a component doesn't declare admin.init, the
-  compiler provides one that takes a unit input and does nothing. A component can be reinitialized
-  by explicitly sending it the "init" message. The runtime always returns a component to its
-  internal initial state before invoking its "init" message handler.)
-
-- The actions (event handler executions) within a component are serialized with respect to each
-  other, without blocking but sometimes with retries. For a component implemented in Cy, this is
-  done by treating the component's vars as STM (Software Transactional Memory) variables. For a
-  component implemented underneath Cy (in Go or wrapped by Go), this is required by
-  convention. Component actions are triggered by input events, replies from other components, and by
-  these same occurrences when a component communicates with itself via internal actions.
-
-- A component's state can only be observed externally through the component's outbound
-  messages. Because of this, and given that actions within a component are serialized, a component's
-  contract can be specified entirely as invariants across its sequence of inbound and outbound
-  messages. (A component implemented underneath Cy is modeled as having input and/or output messages
-  that the Cy program does not happen to access.)
-
-- Execution never blocks within a function or an action. The flow of messages between actions
-  (within and across components) is modeled as asynchronous events. Cy's philosophy is that,
-  although a synchronous model (where threads block on IO, RPCs, etc.) is superficially more
-  convenient, it is such an unsupportable lie that it causes more trouble than it is worth.
-  Instead, Cy focuses on making asynchrony as convenient and natural as possible.
-
-- Components are RESTful by default, with built-in support for the Verbs GET, POST, PUT, and DELETE.
-  There are additional Verbs DO and EVENT for non-RESTful actions with and without responses.
-
-- Cy provides built-in support for specifying and validating contracts at both the function
-  level and the component level.
-
 
 License
 -------
 
-All source code in this project (whether so marked or not) is Copyright (c) Dean Thompson and
-BSD. All documentation (whether so marked or not) is Copyright (c) Dean Thompson and Creative 
-Commons Attribution 3.0.
+All artifacts in this project (whether so marked or not) are Copyright (c) Dean Thompson and
+MIT licensed.
 
 
 Documentation

@@ -1,5 +1,5 @@
-Coding Synergy
-==============
+World Wide Hack
+===============
 
 Developers "create" software.  Traditionally, this means we "build" software.  It is much like
 building something with traditional Legos, or like writing a novel: we imagine what we want, and
@@ -36,7 +36,6 @@ existing functions that operate on similar data structures, especially those wit
 pick one and tweak it a bit.
 
 etc.
-
 
 
 Implementation Details

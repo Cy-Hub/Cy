@@ -13,19 +13,14 @@ Key
 (x) done
 
 
-Language Design Thread
-----------------------
+Skill Development Thread
+------------------------
 
-(!) Work through Go's spec, writing a corresponding Cy spec.
+(!) Develop an open-source Rust library for functional map-based data structures.
 
-(!) Implement a trivial Go-to-Go translator by forking the appropriate standard Go packages.
+( ) Extend the library to imperative map-based data structures.
 
-( ) Implement a Cy compilation/execution environment in Go based on the Go-to-Go translator, 
-    where initially Cy == Go.
-
-( ) Modify the Go-to-Go translator step by step into a Cy-to-Go translator.
-
-( ) Get some experience writing Cy programs in a text editor and iterate on the language design.
+( ) Extend the library to a broad set of functional and imperative data structures.
 
 
 IDE Design Thread
@@ -41,10 +36,10 @@ IDE Design Thread
 IDE Development Thread
 ----------------------
 
-( ) Determine how debugger technology and interpreter technology will interrelate.
+(!) Determine how debugger technology and interpreter technology will interrelate.
 
-( ) Develop a Go interpreter. (Fork from [sbinet/go-eval](https://github.com/sbinet/go-eval)?)
+( ) Develop a Rust "interpreter", hopefully just with LLVM tools.
 
-( ) Choose the IDE platform.  ([Irrlicht](http://irrlicht.sourceforge.net/)?)
+( ) Choose the IDE rendering platform.  ([Irrlicht](http://irrlicht.sourceforge.net/) plus [Crazy Eddie's GUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)?)
 
-( ) Develop a competent text editor or editor integration in Go. 
+( ) Develop a competent text editor or editor integration in Rust. 

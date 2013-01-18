@@ -7,8 +7,6 @@ Translate Haskell libraries (including perhaps the [Edison Library](http://web.c
 
 Translate [Scalaz](http://code.google.com/p/scalaz/)? (It is BSD licensed. But it is monad-intensive.)
 
-Use OCAML as primary syntax touchstone?
-
 Translate [Oni](https://bitbucket.org/jhw/oni)?
 
 Study [jEdit](http://www.jedit.org/) for text editor programming approaches.
