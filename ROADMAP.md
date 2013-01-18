@@ -16,11 +16,11 @@ Key
 Skill Development Thread
 ------------------------
 
-(!) Develop an open-source Rust library for functional map-based data structures.
+(!) Develop an open-source Rust library for pure map-based data structures.
 
-( ) Extend the library to imperative map-based data structures.
+( ) Extend the library to other functional constructs.
 
-( ) Extend the library to a broad set of functional and imperative data structures.
+( ) Extend the library to a broad set of pure collections.
 
 
 IDE Design Thread
