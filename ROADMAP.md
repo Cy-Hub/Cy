@@ -23,6 +23,24 @@ Skill Development Thread
 ( ) Extend the library to a broad set of pure collections.
 
 
+Rust-Hub
+--------
+
+Initially, the rust-hub.org web site will provide a Rust development social network with intended Cy
+features implemented standalone -- with no IDE support. It will be implemented on a Rust port of
+[Play Framework](http://playframework.org/), although porting just enough of Play to serve
+Rust-Hub's immediate needs (unless other developers join in to help finish the port for its own
+value).
+
+( ) Implement the bare bones of play-rust.
+
+( ) Implement the bare bones of rust-hub.org.
+
+( ) Implement a Hoogle-like Rust library search.
+
+( ) Implement "Login with GitHub".
+
+
 IDE Design Thread
 -----------------
 
