@@ -16,7 +16,7 @@ Key
 Skill Development Thread
 ------------------------
 
-(!) Develop an open-source Rust library for pure map-based data structures.
+(-) Develop an open-source Rust library for pure map-based data structures ([pure-rust](https://github.com/Cy-Hub/pure-rust))
 
 ( ) Extend the library to other functional constructs.
 
