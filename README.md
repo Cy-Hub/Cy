@@ -1,7 +1,7 @@
 Cy
 ==
 
-Cy is a development environment for the "world-wide hack" -- a world-wide collaborative search through the
+Cy is a development environment for the World Wide Hack -- a worldwide collaborative search through the
 space of useful software components. It is an effort to re-imagine the craft of programming, with
 inspiration from Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and
 with a focus on frictionless collaboration.
@@ -27,10 +27,10 @@ millions of people with varied skills and interests to write code that lives in 
 Cy was created by Dean Thompson.
 
 
-The World-Wide Hack
+The World Wide Hack
 -------------------
 
-The world-wide hack is a collaborative search through the space of useful software components by
+The World Wide Hack is a collaborative search through the space of useful software components by
 people and machines who take on the following five roles:
 
 - *Principal*: the primary author of a particular set of software components.
@@ -116,7 +116,7 @@ current board position or from a potential line of play.
 Platform Design
 ---------------
 
-Cy will provide the environment, data, and workflow needed to support the world-wide hack:
+Cy will provide the environment, data, and workflow needed to support the World Wide Hack:
 
 - Reputation management and quality scoring.
 - Freelancing and crowd-sourcing.
