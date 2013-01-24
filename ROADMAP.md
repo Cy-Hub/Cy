@@ -18,11 +18,6 @@ Skill Development Thread
 
 (-) Develop an open-source Rust library for pure functional programming ([pure-fun](https://github.com/rust-hub/pure-fun))
 
-( ) Extend the library to other functional constructs.
-
-( ) Extend the library to a broad set of pure collections.
-
-
 Rust-Hub
 --------
 
