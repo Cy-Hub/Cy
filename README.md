@@ -1,14 +1,9 @@
 Cy
 ==
 
-Cy is a development environment for the World Wide Hack -- a worldwide collaborative search through the
-space of useful software components. It is an effort to re-imagine the craft of programming, with
+Cy (pronounced like "sigh") is a development environment for the World Wide Hack -- a worldwide collaborative search through the space of useful software components. It is an effort to re-imagine the craft of programming, with
 inspiration from Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and
 with a focus on frictionless collaboration.
-
-Cy is based on Mozilla's new language [Rust](http://rust-lang.org). Rust suits Cy's goals because it
-combines pragmatism with a powerful type system and other powerful safety features, and because it compiles
-through [LLVM](http://llvm.org).
 
 Cy's design focuses on four of the most important new programming problems during its intended
 prime of life -- the 2020s: 
@@ -25,6 +20,21 @@ enabled millions of people to write useful code behind a keyboard and monitor. N
 millions of people with varied skills and interests to write code that lives in the world.
 
 Cy was created by Dean Thompson.
+
+Language Platform
+-----------------
+
+Cy could be based on [the Wolfram Language](https://www.wolfram.com/language/), [Rust](http://rust-lang.org), or a combination of two. (Or perhaps there is a better choice than either.) The Wolfram Language is intriguing for Cy because it is especially amenable to learnable programming:
+
+* Mathematica's existing "notebook" interface already has some of the characteristics of learnable programming, such as easy interactive exploration in the style of SmallTalk or LISP, with immediate access to graphics and data visualization.
+* Because in the Wolfram Language (like LISP), programs are also data structures in the language, it is relatively straightforward to build powerful programming tools in the direction Cy envisions.
+* The functional style of the Wolfram Language, plus the rich library of existing well-defined functions, lend themselves to highly composable abstractions.
+
+Cy is based on Mozilla's new language  Rust is intriguing for Cy because it
+combines pragmatism with a powerful type system and other powerful safety features, and because it compiles
+through [LLVM](http://llvm.org).
+
+One sensible approach, if both the Wolfram Language and Rust are successful, would be to embrace both, with Wolfram Language as the high-level programming environment and Rust for building libraries that need to live closer to the metal.
 
 
 The World Wide Hack
