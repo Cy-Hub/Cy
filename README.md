@@ -1,6 +1,9 @@
 Cy
 ==
 
+*OBSOLETE:*  This repo is of historical interest only. The line of thought continues in [the World
+ Wide Hack project](https://github.com/WorldWideHack).
+
 Cy (pronounced like "sigh") is a development environment for the World Wide Hack -- a worldwide collaborative search through the space of useful software components. It is an effort to re-imagine the craft of programming, with
 inspiration from Bret Victor's [Learnable Programming](http://worrydream.com/LearnableProgramming/), and
 with a focus on frictionless collaboration.
