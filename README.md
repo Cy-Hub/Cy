@@ -33,7 +33,7 @@ Cy could be based on [the Wolfram Language](https://www.wolfram.com/language/), 
 * Because in the Wolfram Language (like LISP), programs are also data structures in the language, it is relatively straightforward to build powerful programming tools in the direction Cy envisions.
 * The functional style of the Wolfram Language, plus the rich library of existing well-defined functions, lend themselves to highly composable abstractions.
 
-Cy is based on Mozilla's new language  Rust is intriguing for Cy because it
+Mozilla's new language, Rust, is intriguing for Cy because it
 combines pragmatism with a powerful type system and other powerful safety features, and because it compiles
 through [LLVM](http://llvm.org).
 
